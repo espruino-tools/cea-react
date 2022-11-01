@@ -1,9 +1,3 @@
-import {EspruinoSplashPage} from './pages/espruino-splash'
-
-function App() {
-  return(
-    <EspruinoSplashPage/>
-  )
-}
+const App = () => <></>
 
 export default App;
