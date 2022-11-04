@@ -1,8 +1,8 @@
-import {EspruinoSplashPage} from './pages/espruino-splash'
+import { Routing } from './routes'
 
 function App() {
   return(
-    <EspruinoSplashPage/>
+    <Routing/>
   )
 }
 

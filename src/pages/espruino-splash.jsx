@@ -1,12 +1,22 @@
 import {DeviceController} from '@espruino-tools/core'
 import '../styles/espruino-splash-styles.css'
 import {useState} from 'react'
+import { Host } from "@espruino-tools/peer"
+import { useEffect } from 'react'
 export const EspruinoSplashPage = () => {
     const [device] = useState(new DeviceController())
     const [connected, setConnected] = useState(false)
 
     const [notificationData,setNotificationData] = useState("")
     const [showNotificationPopup,setShowNotificationPopup] = useState(false)
+
+    const [p] = useState(new Host())
+
+    useEffect(()=>{
+        p.getData(function(data){
+            console.log(data)
+        })
+    },[])
 
     const showNotification = (data,timeout=2000) => {
         setNotificationData(data)
