@@ -1,4 +1,4 @@
-import {DeviceController} from '@espruino-tools/device-controller'
+import {DeviceController} from '@espruino-tools/core'
 import '../styles/espruino-splash-styles.css'
 import {useState} from 'react'
 export const EspruinoSplashPage = () => {
