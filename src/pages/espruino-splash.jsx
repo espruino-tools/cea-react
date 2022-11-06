@@ -1,6 +1,6 @@
 import {DeviceController} from '@espruino-tools/core'
 import '../styles/espruino-splash-styles.css'
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import { Host } from "@espruino-tools/peer"
 import { useEffect } from 'react'
 export const EspruinoSplashPage = () => {
@@ -11,7 +11,15 @@ export const EspruinoSplashPage = () => {
     const [showNotificationPopup,setShowNotificationPopup] = useState(false)
 
     const [p] = useState(new Host())
-
+    let videoRef = useRef(null)
+    useEffect(()=>{
+        p.getVideo(function(data){
+            videoRef.current.srcObject = data
+        })
+        p.getData(function(data){
+            alert(data)
+        })
+    },[p])
     useEffect(()=>{
         p.getData(function(data){
             console.log(data)
@@ -52,6 +60,7 @@ export const EspruinoSplashPage = () => {
             <button onClick={disconnect} className='esp-btn red'>Disconnect</button>
             }
             {showNotificationPopup && <Notification data={notificationData}/>}
+            <video ref={videoRef} autoPlay/>
         </div>
     )
 }
